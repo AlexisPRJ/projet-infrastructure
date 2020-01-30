@@ -1,0 +1,19 @@
+- name: Création & provisionning d'un serveur
+  hosts: all
+  tasks:
+     - name: Installation de VM
+       proxmox_kvm:
+        api_user    : root@pam
+        api_password: itescia
+        api_host    : 172.16.203.161
+        name        : Ubuntu-srv
+        node        : pve
+        clone       : Ubuntu-server-template-install
+        timeout      : 500
+#        force       : yes
+#        hostname    : Serveur-test
+#        password    : itescia
+#        src         : /stock/ubuntu-18.04.1-live-server-amd64.iso 
+#        state       : started
+#        netif       : '{"net0":"name=eth0,ip=dhcp,ip6=dhcp,bridge=vmbr0"}'
+#        pubkey      : (Pour spécifer la clé ssh) 

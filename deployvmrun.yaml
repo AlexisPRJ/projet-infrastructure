@@ -1,0 +1,34 @@
+- name: Création d'une VM
+  hosts: all
+  tasks:
+     - name: Configuration de VM
+       proxmox_kvm:
+        api_user    : root@pam
+        api_password: itescia
+        api_host    : 172.16.203.161
+        name        : Ubuntu-srv
+        node        : pve
+        clone       : Ubuntu-srv-template
+     - name: Pause 30 secondes
+       wait_for:
+        timeout: 30
+       delegate_to: localhost
+     - name: Démarage de la VM
+       proxmox_kvm:
+        api_user    : root@pam
+        api_password: itescia
+        api_host    : 172.16.203.161
+        name        : Ubuntu-srv
+        node        : pve
+	state       : started
+#       delegate_to  : Ubuntu-srv
+#     - name: Mise à jour des dépôts
+#       state       : started
+#       apt: update_cache=yes
+#        force       : yes
+#        hostname    : Serveur-test
+#        password    : itescia
+#        src         : /stock/ubuntu-18.04.1-live-server-amd64.iso 
+#        state       : started
+#        netif       : '{"net0":"name=eth0,ip=dhcp,ip6=dhcp,bridge=vmbr0"}'
+#        pubkey      : (Pour spécifer la clé ssh)

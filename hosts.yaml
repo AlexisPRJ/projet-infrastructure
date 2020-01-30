@@ -1,0 +1,18 @@
+---
+all:
+ hosts:
+  pve1:
+  pve2:
+  pve3:
+ children:
+  pve1:
+   hosts:
+    pve1:
+ children:  
+  pve2:
+   hosts:
+    pve2:
+ children:
+  pve3:
+   hosts:
+    pve3:
