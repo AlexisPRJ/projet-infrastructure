@@ -8,7 +8,16 @@
         comment: "Refuse block IP"
         ctstate: NEW
         jump: DROP
-        protocol: tcp
+        protocol: all
+      name: DeclineBlockIP
+           
+      iptables:
+        chain: OUTPUT
+        comment: "Refuse block IP"
+        ctstate: NEW
+        destination_port: all
+        jump: DROP
+        protocol: all
       name: DeclineBlockIP
       
       iptables:
@@ -19,6 +28,24 @@
         jump: ACCEPT
         protocol: tcp
       name: AllowSSH
+      
+      iptables:
+        chain: OUTPUT
+        comment: "Accept new SSH connections."
+        ctstate: NEW
+        destination_port: 22
+        jump: ACCEPT
+        protocol: tcp
+      name: AllowSSH
+      
+      iptables:
+        chain: INPUT
+        comment: "Allow port 8006"
+        ctstate: New
+        destination_port: 8006
+        jump: ACCEPT
+        protocol: tcp
+      name: AllowHTTP
       
       iptables:
         chain: INPUT
