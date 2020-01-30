@@ -1,0 +1,13 @@
+- name: Création & provisionning d'un serveur
+  hosts: all
+  tasks:
+     - name: Installation de VM
+       proxmox_kvm:
+        api_user    : root@pam
+        api_password: itescia
+        api_host    : 172.16.203.161
+        name        : Ubuntu-srv
+        node        : pve
+        clone       : Ubuntu-server-template-install
+        timeout      : 500
+
