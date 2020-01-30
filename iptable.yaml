@@ -1,11 +1,13 @@
-hosts: all
-task:
-  -
-    iptables:
-      chain: INPUT
-      comment: "Accept new SSH connections."
-      ctstate: NEW
-      destination_port: 22
-      jump: ACCEPT
-      protocol: tcp
-    name: AllowSSH
+---
+-
+  hosts: all
+  tasks:
+    -
+      iptables:
+        chain: INPUT
+        comment: "Accept new SSH connections."
+        ctstate: NEW
+        destination_port: 22
+        jump: ACCEPT
+        protocol: tcp
+      name: AllowSSH
