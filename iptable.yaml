@@ -48,7 +48,7 @@
       name: AllowHTTP
       
       iptables:
-        chain: INPUT
+        chain: OUTPUT
         comment: "Allow port 8006"
         ctstate: New
         destination_port: 8006

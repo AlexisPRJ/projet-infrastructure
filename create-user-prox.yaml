@@ -1,10 +1,12 @@
-- name: Création d'utilisateur
+---
+-
   hosts: all
-  tasks:
-     - name: Installation de VM
-       user:
-        name: itesciadmin
-        comment: jojo
-        uid: 1040
-        group: root
-
+  tasks:     
+     - name: Création d'utilisateur
+       user: 
+          name: itesciadmin
+          shell: /bin/bash
+          comment: itesciadmin
+          uid: 1040
+          group: root
+          password : '$6$mysecretsalt$TK1JRwYBuDh29pZVgcQNHWAFZa7bKBqtz8RIPP/PjaLezkXZSSvPHuTVC/TF6RQQAw3mTb3yfx2TUFFotMhlr/'
