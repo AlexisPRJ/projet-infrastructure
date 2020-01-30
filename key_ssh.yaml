@@ -1,0 +1,6 @@
+---
+-
+  hosts: all
+  tasks: 
+    - name: AJout de la clé SSH
+      authorized_key:   user=itesciadmin key="{{ lookup('file', '~/.ssh/id_rsa.pub')}}"
