@@ -5,9 +5,28 @@
     -
       iptables:
         chain: INPUT
+        comment: "Refuse block IP"
+        ctstate: NEW
+        jump: DROP
+        protocol: tcp
+      name: DeclineBlockIP
+      
+      iptables:
+        chain: INPUT
         comment: "Accept new SSH connections."
         ctstate: NEW
         destination_port: 22
         jump: ACCEPT
         protocol: tcp
       name: AllowSSH
+      
+      iptables:
+        chain: INPUT
+        comment: "Allow port 8006"
+        ctstate: New
+        destination_port: 8006
+        jump: ACCEPT
+        protocol: tcp
+      name: AllowHTTP
+        
+        
